@@ -34,15 +34,30 @@ text_splitter = TokenTextSplitter(chunk_size=1000, chunk_overlap=0)
 
 texts = text_splitter.split_documents(flat_list)
 
+#@st.cache_data
+#def ada_embeddings():
+  #  OpenAIEmbeddings(openai_api_key="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")
+ #   return
+#
+#embeddings = ada_embeddings()
+
 embeddings = OpenAIEmbeddings(openai_api_key="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")
 
-pinecone.init(      
-   api_key='ab5a11d1-28d4-4c93-a1a4-ffeb07fca4c5',      
-   environment='gcp-starter'      
-)      
+@st.cache_resource
+def vdb_connection():
+    pinecone.init(      
+    api_key='ab5a11d1-28d4-4c93-a1a4-ffeb07fca4c5',      
+    environment='gcp-starter'      
+    )  
+    return  
 
-index = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name='pybot')
+vdb = vdb_connection()
 
+index_name='pybot'
+
+index = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
+
+@st.cache_data
 def get_similiar_docs(query,k=1,score=False):
   if score:
     similar_docs = index.similarity_search_with_score(query,k=k)
@@ -50,9 +65,8 @@ def get_similiar_docs(query,k=1,score=False):
     similar_docs = index.similarity_search(query,k=k)
   return similar_docs
 
-# create tabs
 tab1, tab2, tab3  = st.tabs([
-    "About ::mag::", 
+    "About :mag:", 
     "Important Information :octagonal_sign:",
     "PyBot :snake:"]
     )
@@ -60,30 +74,28 @@ tab1, tab2, tab3  = st.tabs([
 with tab1:
     image = Image.open('PyBot_Logo.png')
     st.image(image)
-    st.markdown("""        
-    #Welcome to PyBot!
-    ###The aim of PyBot is to tutor students enrolled on the ELEC0021 module on the Python programming langauge - specifically, the Week 1 Topic (Introduction to Procedural Python).
+    st.title("Welcome to PyBot!")
+    st.markdown("""
+    The aim of PyBot is to tutor students enrolled on the ELEC0021 module on the Python programming langauge - specifically, the Week 1 Topic (Introduction to Procedural Python).
     Its powered by the OpenAI API 'gpt-3.5-turbo' model (the brain behind ChatGPT) and its been trained on teaching resources :books:.
     We have created PyBot with you, the students, in mind and would therefore be extremely greatful if you could use it to assist you with your learning :mortar_board:.
     We encourage you to use PyBot freely and as often as you like during the beta-testing period :blush:.
-    Please see the 'Important Information tab on the left-hand side before chatting with PyBot!
+    Please see the 'Important Information' tab in the middle before chatting with PyBot!
     """
     )                            
 
 with tab2:
-    st.markdown("""
-    #Important Information
-    ###Disclaimer: PyBot is GDPR compliant. All users will remain anonymous and all inputs provided to PyBot will not be used for further training. Please refer to Dr. Alejandra Beghelli for further information.')
-    ###Terms of Service (ToS): PyBot should only be used for summative assessments in accordance with UCL policy (https://www.ucl.ac.uk/students/exams-and-assessments/assessment-success-guide/engaging-ai-your-education-and-assessment). PyBot does not condone, incite and/or generates inappropriate content that violates OpenAIs usage policies (https://openai.com/policies/usage-policies).')
+    st.title("Important Information")
+    st.markdown("""     
+    Disclaimer: PyBot is GDPR compliant. All users will remain anonymous and all inputs provided to PyBot will not be used for further training. Please refer to Dr. Alejandra Beghelli for further information.
+    
+    Terms of Service (ToS): PyBot should only be used for summative assessments in accordance with UCL policy (https://www.ucl.ac.uk/students/exams-and-assessments/assessment-success-guide/engaging-ai-your-education-and-assessment). PyBot does not condone, incite and/or generates inappropriate content that violates OpenAIs usage policies (https://openai.com/policies/usage-policies).')
     By using this application, you acknowledge the Disclaimer and agree to abide by the ToS.
     """
     )
 
 with tab3:
-    st.markdown("""
-    #PyBot
-    """
-    )
+    st.title("PyBot")
     if 'responses' not in st.session_state:
         st.session_state['responses'] = ["How can I assist you?"]
 
@@ -105,7 +117,7 @@ with tab3:
   
     with textcontainer:
         query = st.text_input("Query: ", key="input")
-        
+        context = "You are a tutor for students studying the Python programming language"
     with response_container:
         if st.session_state['responses']:
             for i in range(len(st.session_state['responses'])):
@@ -113,20 +125,27 @@ with tab3:
                 if i < len(st.session_state['requests']):
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
 
+#    @st.cache_data
+ #   def llm():
+  #      ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="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")
+#
+ #   gpt=llm()
+
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="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")
 
     conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=True)
 
     if query:
         with st.spinner("typing..."):
-            filter = openai.moderations.create(query)
-            if filter.results[0].flagged == 'false':
-                response = conversation.predict(input=f"Context:\n{context} \n\n Query:\n{query}")
-            else:
-                st.write("I'm sorry but I couldn't understand your question. Could you please try again?")
+#            filter = openai.Moderations.create(query)
+ #           if filter.results[0].flagged == 'false':
+            response = conversation.predict(input=f"Context:\n{context} \n\n Query:\n{query}")
+  #          else:
+   #             st.write("I'm sorry but I couldn't understand your question. Could you please try again?")
         st.session_state.requests.append(query)
         st.session_state.responses.append(response)
 
+    @st.cache_data
     def query_refiner(conversation, query):
         response = openai.Completion.create(
         model="text-davinci-003",
@@ -139,11 +158,13 @@ with tab3:
         )
         return response['choices'][0]['text']
 
+    @st.cache_data
     def find_match(input):
         input_em = model.encode(input).tolist()
         result = index.query(input_em, top_k=2, includeMetadata=True)
         return result['matches'][0]['metadata']['text']+"\n"+result['matches'][1]['metadata']['text']
 
+    @st.cache_data
     def get_conversation_string():
         conversation_string = ""
         for i in range(len(st.session_state['responses'])-1):        
