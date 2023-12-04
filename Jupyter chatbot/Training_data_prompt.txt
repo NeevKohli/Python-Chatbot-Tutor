@@ -1,0 +1,216 @@
+Declaring_variables = 
+“No need to declare type and pointers do not exist (unlike C).
+Example: 
+Text type (str): name=”Ben” , letter=”c”
+Numeric type
+•	(int): x=3
+•	(float): y=3.5
+•	Sequence (list): names=[“Zhang”, “Smith”, “Singh”]
+•	Boolean (bool): a=TRUE
+From C to Python: Using operators (Page 41)
+In C we use:
+•	= (assignment)
+•	+ - * / % ** // (arithmetic)
+•	== != < > <= >= (comparison)
+•	not and or (logical)
+In Python we use:
+•	= (assignment)
+•	+ - * / % ** // (arithmetic)
+•	== != < > <= >=  (comparison)
+•	not and or (logical)
+<Give examples such as the ones below>
+Exponentiation:
+x=2**3 #x stores the value 8 (2^3)
+Integer part of division: 
+x= 5//4 #x stores the value 1 (integer part of 1.25)
+Logical:
+if(x>3 and x<5)”
+Flow control = “
+In C we define flow control techniques with:
+•	If-else
+•	Switch-case
+In Python we only have:
+•	If-else
+While in C we use curly brackets to define what is inside an if-else loop, in Python indentation is used to signal instructions inside if-else. A colon also needs to be added at the end of the if and else conditions.
+In Python, we have while loops and for loops like C, but we don’t have do-while loops.
+<Give examples of while loops and if-else loops in Python such as the one below, comparing Python to C>
+Python language:
+i=0
+while(i<5):
+i=i+1
+print(i)
+C language:
+i=0;
+while (i<5)
+{
+i=i+1;
+printf(“%d\n”,i);
+} 
+C language:
+if (x>3 && x<5)
+{
+printf(“x is in range\n”); x=x+1;
+}
+else
+{
+printf(“Not in range”);
+}
+Python language:
+if (x>3 and x<5):
+print(“x is in range\n”)
+x=x+1
+else:
+print(“Not in range”)
+We can notice in these two examples that Python does not use semicolons and curly brackets, but rather uses colons at the end of the conditions and indentation to signal what goes inside the loops.
+<Give examples of for loop in Python such as the one below, comparing Python to C>
+For loop example 1:
+C language: 
+char x[11]="Programming"; 
+int c; 
+for(c=0; c)
+printf("%c\n",x[c]);
+Python language:
+x="Programming"
+for c in x:
+print(c)
+For loop example 2:
+C language:
+int i;
+for(i=0; c<6; i++)
+printf("%d\n",i);
+Python language:
+for i in range(6):
+print(i)”
+
+Replit = “
+Replit is an online Integrated Development Environment (IDE).
+Replit is a text editor and interpreter.
+Python is an interpreter (unlike C which is a compiler).
+Python is a higher-level language than C.
+C feeds the whole programme to the compiler whereas Python feeds the whole programme to the interpreter. The compiler and interpreter then translate the instructions to machine code which the computer can read.”
+Functions = 
+“In C we use printf() and scanf() while in Python we use print() and input() 
+<Give some examples of Input/output like the ones below>
+Example 1:
+C language:
+#include <stdio.h>
+…
+int x=3;
+char c=“Z”;
+printf(“Hello\n”);
+printf(“x stores number %d\n”, x);
+printf(“c stores character %c\n”, c);
+Python language:
+x=3
+c=“Z”
+print(“Hello”)
+print(“x stores number “+str(x))
+Print(“c stores character “+c)
+Example 2:
+C language:
+#include <stdio.h>
+…
+char name[10];
+printf("Please, enter your name\n");
+scanf("%s", &name);
+printf("Name entered: %s\n", name);
+
+Python language:
+print("Please, enter your name")
+name=input()
+print("Name entered: "+name)”
+
+Your Own Functions =
+“In C we define functions in the following way:
+ftype fname(type1 arg_name1, type2 arg_name2, …)
+{
+instruction 1;
+instruction 2;
+…
+return v1 //return if ftype!=void, only 1 value
+} 
+In the code above:
+ftype: data type of the value returned by the function
+fname: name of the function
+typeK: type of the K-th input argument
+arg_nameK: name of the K-th ainput argument
+In Python we define the same function as:
+def fname(arg_name1, arg_name2, …):
+instruction 1
+instruction 2
+…
+return v1, v2, … #return is optional
+
+where def is the reserved word, fname is the function name and inside the arguments we only put the input argument. Notice that we use a colon in Python at the end of the definition of the function
+<Give examples on writing functions showing also the differences between C and Python as shown below>
+In C: 
+int sum (int a, int b)
+{
+return a+b;
+} 
+In Python:
+def sum (a, b):
+return a+b
+Another difference between C and Python is that in C we can only return 1 value, while in python we can return multiple values. 
+The programme structure =
+“<Give example of the programme structure in C and Python as below>
+#include <stdio.h>
+float circle_area(float r)
+{
+return 3.14*r*r;
+}
+float circle_perimeter(float r)
+{
+return 2*3.14*5;
+}
+int main()
+{
+float r, area, perimeter;
+printf(“Please, enter radious:\n”);
+scanf(“%f”, &r);
+area=circle_area(r);
+perimeter=circle_perimeter(r);
+printf(“The area is %f\n”, area);
+printf(“The perimeter is %f\n”, perimeter);
+}
+
+def circle_prop(r):
+area=3.14*r*r;
+perimeter=2*3.14*r
+return area, perimeter”
+Exception_Handling = “ An exception is an error detected during the execution of the code. Exception handling is instead the process that deals with the execution error, avoiding the programme to crash.
+Example 1:
+“””
+print("Please, enter a number:") 
+x=int(input()) 
+x=x+6 
+print(x)
+“””
+This code will ouput a ValueError message
+<Give examples similar to example 1>
+ValueError is just one type of exception, which indicates inappropriate value is received. There are other types of exceptions like:
+-NameError: name of inexistent variable. 
+-ZeroDivisionError: the second argument of a division or modulo operation is zero.
+For more information about exceptions the student can visit this page: https://docs.python.org/3/library/exceptions.html
+<Give examples similar to the examples below, explaining the structure of the code>
+try:
+print("Please, enter a number:")
+x=int(input())
+x=x+6
+print(x)
+except:
+print(“You have not entered a number”)
+
+
+
+try:
+print("Please, enter a number between 1 and 10:")
+x=int(input())
+if (x<1 or x>10):
+		raise IndexError
+x=x+6
+print(x)
+except ValueError:
+print("You have not entered a number")
+except IndexError:
+print("Number out of range")“
