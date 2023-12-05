@@ -5,48 +5,16 @@ from st_pages import Page, show_pages, add_page_title
 import openai
 from PIL import Image
 import streamlit_authenticator as stauth
-from openai import OpenAI
-client = OpenAI()
+#from Main.py import *
 
 openai.api_key="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"
-
-#Login page - user enters credentials (username and/or password) to access conversation history (archived from previous sessions)
-#Hash (encrypt) them for user privacy and security before implementing end-user IDs for OpenAI to monitor via the moderation endpoint tool
-#better than Session IDs which are only valid for a single session so users cannot access their conversation history
-
-# Create an empty container
-placeholder = st.empty()
-flag=False
-
-while flag==False:
-    # Insert a form in the container
-    with placeholder.form("login"):
-        #Single
-        st.markdown(":wave:")
-        username = st.text_input("Username")
-        submit = st.form_submit_button("Login")
-
-    if username != None:
-        hashed_username = stauth.Hasher(username).generate()
-        # clear the form/container and display a success message
-        placeholder.empty()
-        st.success("Login successful")
-        flag=True
-
-    else:
-        st.error("Login failed")
-
-#check if username is text before proceeding (it cannot be alphanumeric)
-
-#To maximise throughput, parallel processing needs to be impemented to handle
-#large volumes of parallel API calls/requests via throttling so that rate limits are not exceeded
-
 
 #light and dark mode toggles
 dark = '''
 <style>
     .stApp {
     background-color: black;
+    color: white;
     }
 </style>
 '''
@@ -55,6 +23,7 @@ light ='''
 <style>
     .stApp {
     background-color: white;
+    color: black;
     }
 </style>
 '''
@@ -80,28 +49,8 @@ if st.session_state.theme == "dark":
 else:
     st.markdown(light, unsafe_allow_html=True)
 
-container1 = st.container(border=True)
-container1.write("This is inside the container")
-image = Image.open('PyBot_Logo.png')
-st.image(image)
-st.title("Welcome to PyBot!")
-st.markdown("""
-The aim of PyBot is to tutor students enrolled on the ELEC0021 module on the Python programming langauge - specifically, the Week 1 Topic (Introduction to Procedural Python).
-It's powered by the OpenAI API 'gpt-3.5-turbo' model (the brain behind ChatGPT) and its been trained on teaching resources :books:.
-We have created PyBot with you, the students, in mind and would therefore be extremely greatful if you could use it to assist you with your learning :mortar_board:.
-We encourage you to use PyBot freely and as often as you like during the beta-testing period :blush:.
-Please click on 'Important Information' before chatting with PyBot!
-"""
-)
-
-expander = st.expander("Important Information :octagonal_sign:")
-expander.write(\"\"\"
-    Disclaimer: PyBot is GDPR compliant. All users will remain anonymous and all inputs provided to PyBot will not be used for further training. Please refer to Dr. Alejandra Beghelli for further information.
-
-    Terms of Service (ToS): PyBot should only be used for summative assessments in accordance with UCL policy (https://www.ucl.ac.uk/students/exams-and-assessments/assessment-success-guide/engaging-ai-your-education-and-assessment). PyBot does not condone, incite and/or generates inappropriate content that violates OpenAIs usage policies (https://openai.com/policies/usage-policies).
-    By using this application, you acknowledge the Disclaimer and agree to abide by the ToS.
-    \"\"\")
-
+#To maximise throughput, parallel processing needs to be impemented to handle
+#large volumes of parallel API calls/requests via throttling so that rate limits are not exceeded
 
 st.title("PyBot :snake:")
 
@@ -133,6 +82,8 @@ about the basics of Python. Here are the topics taught in week 1:
     Beginner: knows until the Replit topic, 
     Intermediate: knows until the exception handling topic,
     Advanced: knows all topics.
+    If the user does not answer the question then ask again nicely.
+    If the user repeatedly does not answer the question then repeatedly tell the user to please answer the question nicely so that you can help them.
     Once they have replied, you can start giving them exercises based on their knowledge level one at a time. Act as a tutor to provide the students 
     with guidance and feedback on their answers to the exercises. Tailor exercises according to the user's knowledge level. If you feel that the user's
     knowledge level has changed over time, then tailor exercises accordingly. 
@@ -154,10 +105,10 @@ for message in st.session_state.messages:
 if prompt := st.chat_input("Please enter your query..."):
 
     #Checking if user's prompt is not flagged as violating OpenAI's usage policies
-    response = client.moderations.create(input=prompt)
-    flagged = response['results'][0]['flagged']
+    #response = openai.moderations.create(input=prompt)
+    #flagged = response['results'][0]['flagged']
 
-    if flagged == 'false':
+    #if flagged == 'false':
         st.session_state.messages.append({"role": "user", "content": prompt})
 
         #User message is displayed
@@ -170,20 +121,18 @@ if prompt := st.chat_input("Please enter your query..."):
         #Prompt injection attack prevention
 
 
-
-
         #Displaying to user that PyBot's response is loading/being generated
         with st.spinner("typing..."):
             #message_placeholder = st.empty()
             #full_response = ""
-            response = client.ChatCompletion.create(
+            response = openai.ChatCompletion.create(
                 model=st.session_state["openai_model"],
                 messages=[
                     {"role": "system", "content": st.session_state.context},
                     {"role": "user", "content": prompt},
                 ],
                 max_tokens=500,
-                user=hashed_username,
+                #user=hashed_username,
             )
 
         st.session_state.messages.append({"role": "assistant", "content": response.choices[0].message["content"]})
@@ -192,9 +141,19 @@ if prompt := st.chat_input("Please enter your query..."):
 
         with st.chat_message("assistant"):
             st.markdown(response.choices[0].message["content"])
-    else:
-        with st.chat_message("assistant"):
-            st.write("PyBot does not engage with inappropriate language.")
-            st.write("You will now been blocked from interacting with PyBot.")
-            st.write("If you believe this is a mistake then please contact the developers.")
-            st.stop()
+    #else:
+        #with st.chat_message("assistant"):
+         #   st.write("PyBot does not engage with inappropriate language.")
+          #  st.write("You will now been blocked from interacting with PyBot.")
+           # st.write("If you believe this is a mistake then please contact the developers.")
+            #st.stop()
+
+# Specify what pages should be shown in the sidebar, and what their titles and icons
+# should be
+show_pages(
+    [
+        Page("Home.py", "Home", ":house:"),
+        Page("Info.py", "Important Information", ":octagonal_sign:"),
+        Page("Chatbot.py", "PyBot", ":snake:")
+    ]
+)
