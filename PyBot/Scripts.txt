@@ -1,0 +1,274 @@
+Declaring_variables = 
+“No need to declare type and pointers do not exist (unlike C).
+Example: 
+Text type (str): name=”Ben” , letter=”c”
+Numeric type
+•	(int): x=3
+•	(float): y=3.5
+•	Sequence (list): names=[“Zhang”, “Smith”, “Singh”]
+•	Boolean (bool): a=TRUE
+From C to Python: Using operators (Page 41)
+In C we use:
+•	= (assignment)
+•	+ - * / % ** // (arithmetic)
+•	== != < > <= >= (comparison)
+•	not and or (logical)
+In Python we use:
+•	= (assignment)
+•	+ - * / % ** // (arithmetic)
+•	== != < > <= >=  (comparison)
+•	not and or (logical)
+<Give examples such as the ones below>
+Exponentiation:
+x=2**3 #x stores the value 8 (2^3)
+Integer part of division: 
+x= 5//4 #x stores the value 1 (integer part of 1.25)
+Logical:
+if(x>3 and x<5)”
+Flow control = “
+In C we define flow control techniques with:
+•	If-else
+•	Switch-case
+In Python we only have:
+•	If-else
+While in C we use curly brackets to define what is inside an if-else loop, in Python indentation is used to signal instructions inside if-else. A colon also needs to be added at the end of the if and else conditions.
+In Python, we have while loops and for loops like C, but we don’t have do-while loops.
+<Give examples of while loops and if-else loops in Python such as the one below, comparing Python to C>
+Python language:
+i=0
+while(i<5):
+i=i+1
+print(i)
+C language:
+i=0;
+while (i<5)
+{
+i=i+1;
+printf(“%d\n”,i);
+} 
+C language:
+if (x>3 && x<5)
+{
+printf(“x is in range\n”); x=x+1;
+}
+else
+{
+printf(“Not in range”);
+}
+Python language:
+if (x>3 and x<5):
+print(“x is in range\n”)
+x=x+1
+else:
+print(“Not in range”)
+We can notice in these two examples that Python does not use semicolons and curly brackets, but rather uses colons at the end of the conditions and indentation to signal what goes inside the loops.
+<Give examples of for loop in Python such as the one below, comparing Python to C>
+For loop example 1:
+C language: 
+char x[11]="Programming"; 
+int c; 
+for(c=0; c)
+printf("%c\n",x[c]);
+Python language:
+x="Programming"
+for c in x:
+print(c)
+For loop example 2:
+C language:
+int i;
+for(i=0; c<6; i++)
+printf("%d\n",i);
+Python language:
+for i in range(6):
+print(i)”
+
+Replit = “
+Replit is an online Integrated Development Environment (IDE).
+Replit is a text editor and interpreter.
+Python is an interpreter (unlike C which is a compiler).
+Python is a higher-level language than C.
+C feeds the whole programme to the compiler whereas Python feeds the whole programme to the interpreter. The compiler and interpreter then translate the instructions to machine code which the computer can read.”
+Functions = 
+“In C we use printf() and scanf() while in Python we use print() and input() 
+<Give some examples of Input/output like the ones below>
+Example 1:
+C language:
+#include <stdio.h>
+…
+int x=3;
+char c=“Z”;
+printf(“Hello\n”);
+printf(“x stores number %d\n”, x);
+printf(“c stores character %c\n”, c);
+Python language:
+x=3
+c=“Z”
+print(“Hello”)
+print(“x stores number “+str(x))
+Print(“c stores character “+c)
+Example 2:
+C language:
+#include <stdio.h>
+…
+char name[10];
+printf("Please, enter your name\n");
+scanf("%s", &name);
+printf("Name entered: %s\n", name);
+
+Python language:
+print("Please, enter your name")
+name=input()
+print("Name entered: "+name)”
+
+Your Own Functions =
+“In C we define functions in the following way:
+ftype fname(type1 arg_name1, type2 arg_name2, …)
+{
+instruction 1;
+instruction 2;
+…
+return v1 //return if ftype!=void, only 1 value
+} 
+In the code above:
+ftype: data type of the value returned by the function
+fname: name of the function
+typeK: type of the K-th input argument
+arg_nameK: name of the K-th ainput argument
+In Python we define the same function as:
+def fname(arg_name1, arg_name2, …):
+instruction 1
+instruction 2
+…
+return v1, v2, … #return is optional
+
+where def is the reserved word, fname is the function name and inside the arguments we only put the input argument. Notice that we use a colon in Python at the end of the definition of the function
+<Give examples on writing functions showing also the differences between C and Python as shown below>
+In C: 
+int sum (int a, int b)
+{
+return a+b;
+} 
+In Python:
+def sum (a, b):
+return a+b
+Another difference between C and Python is that in C we can only return 1 value, while in python we can return multiple values. 
+The programme structure =
+“<Give example of the programme structure in C and Python as below>
+#include <stdio.h>
+float circle_area(float r)
+{
+return 3.14*r*r;
+}
+float circle_perimeter(float r)
+{
+return 2*3.14*5;
+}
+int main()
+{
+float r, area, perimeter;
+printf(“Please, enter radious:\n”);
+scanf(“%f”, &r);
+area=circle_area(r);
+perimeter=circle_perimeter(r);
+printf(“The area is %f\n”, area);
+printf(“The perimeter is %f\n”, perimeter);
+}
+
+def circle_prop(r):
+area=3.14*r*r;
+perimeter=2*3.14*r
+return area, perimeter”
+Exception_Handling = “ An exception is an error detected during the execution of the code. Exception handling is instead the process that deals with the execution error, avoiding the programme to crash.
+Example 1:
+“””
+print("Please, enter a number:") 
+x=int(input()) 
+x=x+6 
+print(x)
+“””
+This code will ouput a ValueError message
+<Give examples similar to example 1>
+ValueError is just one type of exception, which indicates inappropriate value is received. There are other types of exceptions like:
+-NameError: name of inexistent variable. 
+-ZeroDivisionError: the second argument of a division or modulo operation is zero.
+For more information about exceptions the student can visit this page: https://docs.python.org/3/library/exceptions.html
+<Give examples similar to the examples below, explaining the structure of the code>
+try:
+print("Please, enter a number:")
+x=int(input())
+x=x+6
+print(x)
+except:
+print(“You have not entered a number”)
+
+
+
+try:
+print("Please, enter a number between 1 and 10:")
+x=int(input())
+if (x<1 or x>10):
+		raise IndexError
+x=x+6
+print(x)
+except ValueError:
+print("You have not entered a number")
+except IndexError:
+print("Number out of range")“
+Additional_aspects = “
+-Comments: <Give examples of how to make comments on Python>,
+-Preview of lists: in C linked lists can allocate 1 element at a time, while in Python lists are dynamic, a list can change its size, Python uses indices and is heterogenous, meaning it can accept integers, floats, letters and booleans.
+<Teach the students on how to create lists and show them different examples of creating lists, accessing elements in a list, adding, removing elements in a list and iterating over a list and propose exercises so that they can practice>
+-Controlling programme execution: this is divided in 3 parts.
+Part 1, in this part teach the students on how to use files different from main.py in Replit. This might not work in other IDEs. 
+<Teach the students how to create a new python file different from main.py called hello.py in Replit, teach them that to execute hello.py they need to click on the Shell tab, that will take them to the Unix Environment and instruct them that to execute the file they have to write “python hello.py” in the console on Replit. After doing this, the file is created.> 
+Part 2: Before the interpreter of Python executes the code, it sets up a few special variables. One of those variables is “double underscore name double underscore”. However, calling it like that it is a bit tedious. So, from now, simply name. But when you use it, please remember that you must write the double underscore before and after name. The value of the variable name depends on how the Python file is executed. First, create a file called file_one.py and insert the following line: 
+Print(“File one __name__ is set to: {}” .format(__name__))
+Then execute it. You will see that the variable name has been initialized to “double underscore main double underscore”. This means that the code being executed is in the same file we called when we wrote “python file_one.py” in the shell. This has been the case with all Pythn programmes we have seen so far. Now, let’s create a second file called file_two.py, and write almost the same line of code we wrote in file_one.py, but now the line of code must say “file two” instead of “file one”. If we execute file_two.py, as expected, the variable name will take the value “double underscore main double underscore”, because the code being executed is in the same file we called from the shell. Now, please modify file_one.py by importing file_two on it. You do that by writing “import file_two” in the first line of file_one.py. By doing so, the code of file_two will be included in file_one. This is similar to what you do in C when you include a library. Here, you are including another Python file. Please, execute this new version of file_one.py now. You will see that the value of the variable name for file_one remains to be “double underscore main double underscore”, as the code is in the file being called with “python file_one.py”. However, the variable name in file two has changed. Since the file being called was file_one and not file_two, the variable name in file two is now equal to file_two, meaning that the code of file two is executed by being included in another file. 
+The __name__ variable of the module being called is equal to __main__
+The __name__ variable of files being imported is equal to the file’s name
+Part 3
+In this part, file_one.py and file_two.py have a bit more code in them. 
+FILE_ONE.PY
+import file_two
+print("File one __name__ is set to: {}"
+.format(__name__))
+def A():
+print("Function A in file one executed")
+if __name__=="__main__":
+print("File one being called")
+A()
+else:
+print("File one being imported")
+file_two.C()
+FILE_TWO.PY
+print("File two __name__ is set to: {}"
+.format(__name__))
+def B():
+print("Function B in file two executed")
+def C():
+print("Function C in file two executed")
+if __name__=="__main__":
+print("File two being called")
+B()
+else:
+print("File two being imported")
+C() 
+As before, file_one.py imports file_two.py. Both files include the instruction that prints the value of variable name on screen. Next, the files define functions. Function A on file_one.py and functions B and C in file_two.py. Depending on the value of the variable name, we can control what functions of the files are executed.
+Assume we execute file_one.py. First, the value of the variable name in file_two will be printed. Since file_two has been imported, the variable will be equal to the file name. That is, file_two. 
+Second, only the part of file two that is executed when the file is imported will be executed. That is, the message that file two has been imported and the execution of function C.
+Next, the value of the variable name for file_one is printed on screen. And finally, the part of the code corresponding to the case of file_one being called for execution will be printed. 
+For more information see: https://www.freecodecamp.org/news/if-name-main-python-example/
+https://www.freecodecamp.org/news/whats-in-a-python-s-name-506262fe61e8/
+- Command line input arguments: 
+As in C, you can enter input parameters to your Python programme using the command line. To do so, we need to import the module sys, and use argv. To check that the user has entered the number of parameters expected by the programme, you use sys.argv. This is an array with as many elements as the number of parameters plus one. The function len returns the number of elements in the array argv. Thus, this is equivalent to argc in C. 
+To retrieve the data entered by the user in the command line, you access the elements of that array. As in C, the element of the array in position 0 is the name of the file being executed. The parameters are stored from position 1 and onwards.
+<Provide examples like the one below and explain how the code works by going through the different cases of inputting numbers>
+Import sys
+if len(sys.argv) != 3:
+	Print(“You need to write 2 numbers after main.py”)
+else:
+	a=sys.argv[1]
+	b=sys.argv[2]
+print(str(int(a)*int(b)))
+”
+
