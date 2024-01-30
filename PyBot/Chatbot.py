@@ -6,48 +6,9 @@ import openai
 from PIL import Image
 import streamlit_authenticator as stauth
 #from Main.py import *
+from trubrics.integrations.streamlit import FeedbackCollector
 
 openai.api_key="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"
-
-#light and dark mode toggles
-dark = '''
-<style>
-    .stApp {
-    background-color: black;
-    color: white;
-    }
-</style>
-'''
-
-light ='''
-<style>
-    .stApp {
-    background-color: white;
-    color: black;
-    }
-</style>
-'''
-st.markdown(light, unsafe_allow_html=True)
-
-# Create a toggle button
-toggle = st.button(":white_large_square::left_right_arrow::black_large_square:")
-
-# Use a global variable to store the current theme
-if "theme" not in st.session_state:
-    st.session_state.theme = "light"
-
-# Change the theme based on the button state
-if toggle:
-    if st.session_state.theme == "light":
-        st.session_state.theme = "dark"
-    else:
-        st.session_state.theme = "light"
-
-# Apply the theme to the app
-if st.session_state.theme == "dark":
-    st.markdown(dark, unsafe_allow_html=True)
-else:
-    st.markdown(light, unsafe_allow_html=True)
 
 #To maximise throughput, parallel processing needs to be impemented to handle
 #large volumes of parallel API calls/requests via throttling so that rate limits are not exceeded
@@ -164,6 +125,24 @@ if prompt := st.chat_input("Please enter your query..."):
           #  st.write("You will now been blocked from interacting with PyBot.")
            # st.write("If you believe this is a mistake then please contact the developers.")
             #st.stop()
+
+        # trubrics - collect and store user feedback
+        collector = FeedbackCollector(
+            email="zceenko@ucl.ac.uk",
+            password="Ramkumar1968!",
+            project="default"
+        )
+
+        user_feedback = collector.st_feedback(
+            component="default",
+            feedback_type="thumbs",
+            open_feedback_label="[Optional] Provide additional feedback",
+            model="gpt-3.5-turbo",
+            prompt_id=None,  # checkout collector.log_prompt() to log your user prompts
+        )
+
+        if user_feedback:
+            st.write(user_feedback)    
 
 # Specify what pages should be shown in the sidebar, and what their titles and icons
 # should be

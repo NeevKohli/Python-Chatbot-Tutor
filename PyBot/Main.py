@@ -10,42 +10,43 @@ import streamlit_authenticator as stauth
 
 # Create an empty container
 placeholder = st.empty()
+
+actual_email = "email"
+actual_password = "password"
+
 flag=False
 
-while flag==False:
-    # Insert a form in the container
-    with st.form(key="login"):
-        #Single
-        st.title(":wave:")
-        username = st.text_input("Username")
-        submit = st.form_submit_button(label="Login")
+# Insert a form in the container
+with placeholder.form(key="login"):
+    while flag==False:
+        st.markdown("#### Enter your credentials")
+        email = st.text_input("Email", key="emaila")
+        password = st.text_input("Password", key="passworda", type="password")
+        submit = st.form_submit_button("Login")
 
-        if submit:
-            if (username != None):
-                hashed_username = stauth.Hasher(username).generate()
-                # clear the form/container and display a success message
-                #placeholder.empty()
-                st.success("Login successful")
-                flag=True
+        if submit and email == actual_email and password == actual_password:
+            # If the form is submitted and the email and password are correct,
+            # clear the form/container and display a success message
+            placeholder.empty()
+            st.success("Login successful")
+            flag=True
 
-            else:
-                st.error("Login failed")
+        elif submit and email != actual_email and password != actual_password:
+            st.error("Login failed")
 
 #check if username is text before proceeding (it cannot be alphanumeric)
+if flag==True:
+    show_pages(
+        [
+            Page("Home.py", "Home", ":house:"),
+            Page("Info.py", "Important Information", ":octagonal_sign:")
+        ]
+    )
 
-# Specify what pages should be shown in the sidebar, and what their titles and icons
-# should be
-show_pages(
-    [
-        Page("Home.py", "Home", ":house:"),
-        Page("Info.py", "Important Information", ":octagonal_sign:")
-    ]
-)
+    hide_pages(
+        [
+            Page("Chatbot.py", "PyBot", ":snake:")
+        ]
+    )
 
-hide_pages(
-    [
-        Page("Chatbot.py", "PyBot", ":snake:")
-    ]
-)
-
-switch_page("Home")
+    switch_page("Home")
