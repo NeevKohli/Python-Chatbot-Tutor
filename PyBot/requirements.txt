@@ -1,0 +1,8 @@
+streamlit
+streamlit_chat
+streamlit_extras
+st_pages
+openai
+PIL
+streamlit_authenticator
+"trubrics[streamlit]"
