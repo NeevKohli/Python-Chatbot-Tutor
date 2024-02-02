@@ -133,8 +133,8 @@ if prompt := st.chat_input("Please enter your query..."):
 
         # trubrics - collect and store user feedback
         collector = FeedbackCollector(
-            email= st.secrets['TRUBRICS_EMAIL'], 
-            password= st.secrets['TRUBRICS_PASSWORD'],
+            email= st.secrets.TRUBRICS_EMAIL, 
+            password= st.secrets.TRUBRICS_PASSWORD,
             project="default"
         )
 
