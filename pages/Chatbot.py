@@ -32,7 +32,7 @@ if "messages" not in st.session_state:
 #Training file injection is fine-tuning - summary of topic 1 slide transcripts
 
 #Chain-of-thought - guiding the chatbot on how to structure their response.
-with open('pages\Scripts.txt', 'r', encoding='utf-8') as file:
+with open(r'pages/Scripts.txt', 'r', encoding='utf-8') as file:
     training_data_prompt = file.read()
 
 if "context" not in st.session_state:
