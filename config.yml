@@ -13,3 +13,7 @@ cookie:
   expiry_days: 30
   key: some_signature_key # Must be string
   name: some_cookie_name
+preauthorized:
+  emails:
+  - zceenko@ucl.ac.uk
+  - zceemc0@ucl.ac.uk
