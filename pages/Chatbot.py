@@ -139,7 +139,7 @@ if prompt := st.chat_input("Please enter your query..."):
             password=st.secrets.TRUBRICS_PASSWORD,
         )
 
-        collector.st_feedback(
+        user_feedback = collector.st_feedback(
             component="PyBot",
             feedback_type="thumbs",
             model="gpt-3.5-turbo",
@@ -147,8 +147,8 @@ if prompt := st.chat_input("Please enter your query..."):
             open_feedback_label='Please enter your feedback here'
         )
 
-        # if user_feedback:
-        #     st.write(user_feedback)    
+        if user_feedback:
+             st.write(user_feedback)    
 
 # Specify what pages should be shown in the sidebar, and what their titles and icons
 # should be
