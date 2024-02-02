@@ -132,22 +132,23 @@ if prompt := st.chat_input("Please enter your query..."):
         # os.environ['password'] = st.secrets['password']
 
         # trubrics - collect and store user feedback
+        
         collector = FeedbackCollector(
-            email= st.secrets.TRUBRICS_EMAIL, 
-            password= st.secrets.TRUBRICS_PASSWORD,
-            project="default"
+            project="PyBot",
+            email=st.secrets.TRUBRICS_EMAIL,
+            password=st.secrets.TRUBRICS_PASSWORD,
         )
 
-        user_feedback = collector.st_feedback(
-            component="default",
+        collector.st_feedback(
+            component="PyBot",
             feedback_type="thumbs",
-            open_feedback_label="[Optional] Provide additional feedback",
             model="gpt-3.5-turbo",
-            prompt_id=None,  # checkout collector.log_prompt() to log your user prompts
+            prompt_id=None,  # see prompts to log prompts and model generations
+            open_feedback_label='Please enter your feedback here'
         )
 
-        if user_feedback:
-            st.write(user_feedback)    
+        # if user_feedback:
+        #     st.write(user_feedback)    
 
 # Specify what pages should be shown in the sidebar, and what their titles and icons
 # should be
