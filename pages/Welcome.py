@@ -11,7 +11,7 @@ from yaml.loader import SafeLoader
 #if Logout:
 #    switch_page("Home")
 
-st.write(f'Welcome *{st.session_state["name"]}*.')
+#st.write(f'Welcome *{st.session_state["name"]}*.')
 
 image = Image.open('PyBot_Logo.png')
 st.image(image)
