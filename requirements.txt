@@ -2,7 +2,7 @@ streamlit
 streamlit_chat
 streamlit_extras
 st_pages
-openai
+openai==0.28
 Pillow
 streamlit_authenticator
 trubrics[streamlit]
