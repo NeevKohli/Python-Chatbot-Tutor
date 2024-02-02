@@ -4,23 +4,26 @@ from streamlit_extras.switch_page_button import switch_page
 from st_pages import Page, show_pages, hide_pages, add_page_title
 from PIL import Image
 import streamlit_authenticator as stauth
+import yaml
+from yaml.loader import SafeLoader
 
-#Add Alejandra's, Arnas', Iason's and the 5 students email later (10 testers in total of which 2 are white-box and 8 are black-box)
-emails = ['zceenko@ucl.ac.uk','zceemc0@ucl.ac.uk']
+with open('../config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
 
-hashed_emails = stauth.Hasher(emails).generate()
+authenticator = stauth.Authenticate(
+    config['email'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+)
 
-authenticator = stauth.Authenticate(hashed_emails,
-    'some_cookie_name','some_signature_key',cookie_expiry_days=30)
+authenticator.login()
 
-username, authentication_status = authenticator.login('Login','main')
-
-if st.session_state['authentication_status']:
-    st.write('Welcome *%s*' % (st.session_state['username']))
+if st.session_state["authentication_status"]:
     switch_page("Welcome")
 
-elif st.session_state['authentication_status'] == False:
-    st.error('The UCL email address entered has not been granted access to this application.')
+elif st.session_state["authentication_status"] is False:
+    st.error('This UCL email address has not been granted access to this application.')
 
-elif st.session_state['authentication_status'] == None:
-    st.warning('Please enter your username and UCL email address.')
+elif st.session_state["authentication_status"] is None:
+    st.warning('Please enter your UCL email address.')
