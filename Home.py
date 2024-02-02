@@ -11,15 +11,17 @@ with open('config.yml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
 authenticator = stauth.Authenticate(
-    config['email'],
+    config['credentials'],
     config['cookie']['name'],
     config['cookie']['key'],
     config['cookie']['expiry_days'],
+    config['preauthorized']
 )
 
 authenticator.login()
 
 if st.session_state["authentication_status"]:
+    st.write(f'Welcome *{st.session_state["name"]}*')
     switch_page("Welcome")
 
 elif st.session_state["authentication_status"] is False:
