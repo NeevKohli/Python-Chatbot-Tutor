@@ -10,7 +10,7 @@ emails = ['zceenko@ucl.ac.uk','zceemc0@ucl.ac.uk']
 
 hashed_emails = stauth.Hasher(emails).generate()
 
-authenticator = stauth.authenticate(hashed_emails,
+authenticator = stauth.Authenticate(hashed_emails,
     'some_cookie_name','some_signature_key',cookie_expiry_days=30)
 
 username, authentication_status = authenticator.login('Login','main')
