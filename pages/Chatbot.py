@@ -8,7 +8,10 @@ import streamlit_authenticator as stauth
 #from Main.py import *
 from trubrics.integrations.streamlit import FeedbackCollector
 
-openai.api_key="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"
+
+import os
+OPEN_API_KEY="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"
+os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 #To maximise throughput, parallel processing needs to be impemented to handle
 #large volumes of parallel API calls/requests via throttling so that rate limits are not exceeded

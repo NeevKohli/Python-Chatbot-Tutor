@@ -5,4 +5,4 @@ st_pages
 openai
 PIL
 streamlit_authenticator
-"trubrics[streamlit]"
+trubrics[streamlit]
