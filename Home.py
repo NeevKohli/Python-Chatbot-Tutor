@@ -19,7 +19,7 @@ authenticator = stauth.Authenticate(
 
 username, authentication_status = authenticator.login('Login', 'main')
 
-if authentication_status:
+if authentication_status == True:
     st.write(f'Welcome *{username}*')
     switch_page("Welcome")
 

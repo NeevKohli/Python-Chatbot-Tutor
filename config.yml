@@ -12,6 +12,6 @@ credentials:
       name: zceemc0
       password: zceemc0
 cookie:
-  expiry_days: 30
+  expiry_days: 0
   key: some_signature_key # Must be string
   name: some_cookie_name
