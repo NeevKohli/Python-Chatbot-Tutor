@@ -3,6 +3,6 @@ streamlit_chat
 streamlit_extras
 st_pages
 openai
-PIL
+Pillow
 streamlit_authenticator
 trubrics[streamlit]
