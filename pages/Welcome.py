@@ -7,6 +7,20 @@ import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
 
+show_pages(
+    [
+        Page(r"pages/Login.py", "Login", ":key:"),
+        Page(r"pages/Welcome.py", "Home", ":house:"),
+        Page(r"pages/Info.py", "Important Information", ":octagonal_sign:")
+    ]
+)
+
+hide_pages(
+    [
+        Page(r"pages/PyBot.py", "PyBot", ":snake:"),
+    ]
+)
+
 Logout = st.button("Logout :arrow_right:")
 if Logout:
     switch_page("Login")
@@ -29,19 +43,6 @@ Please click on 'Important Information' before chatting with PyBot!
 
 # Specify what pages should be shown in the sidebar, and what their titles and icons
 # should be
-show_pages(
-    [
-        Page(r"pages/Welcome.py", "Home", ":house:"),
-        Page(r"pages/Info.py", "Important Information", ":octagonal_sign:")
-    ]
-)
-
-hide_pages(
-    [
-        Page(r"pages/PyBot.py", "PyBot", ":snake:"),
-        Page(r"pages/Login.py", "Login", ":key:")
-    ]
-)
 
 Info = st.button("Important Information :octagonal_sign:")
 if Info:
