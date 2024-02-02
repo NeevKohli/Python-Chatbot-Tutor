@@ -16,6 +16,7 @@ show_pages(
 
 hide_pages(
     [
+        Page(r"pages/Login.py", "Login", ":key:"),
         Page(r"pages/PyBot.py", "PyBot", ":snake:"),
     ]
 )
