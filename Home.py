@@ -25,7 +25,7 @@ authenticator = stauth.Authenticate(
     config['cookie']['expiry_days']
 )
 
-authenticator.login()
+name, authentication_status = authenticator.login()
 
 if st.session_state["authentication_status"]:
     switch_page("Welcome")

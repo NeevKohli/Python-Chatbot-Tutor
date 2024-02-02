@@ -7,11 +7,11 @@ import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
 
-Logout = st.button("Logout :arrow_right:")
-if Logout:
-    switch_page("Home")
+#Logout = st.button("Logout :arrow_right:")
+#if Logout:
+#    switch_page("Home")
 
-st.write(f'Welcome *{st.session_state["name"]}*')
+st.write(f'Welcome *{st.session_state["name"]}*.')
 
 image = Image.open('PyBot_Logo.png')
 st.image(image)
