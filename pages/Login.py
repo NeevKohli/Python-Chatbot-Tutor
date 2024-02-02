@@ -37,7 +37,7 @@ if st.session_state["authentication_status"]:
     switch_page("Home")
 
 elif st.session_state["authentication_status"] is False:
-    st.error('This UCL email address has not been granted access to this application.')
+    st.error('You have not been granted access to this application.')
 
 elif st.session_state["authentication_status"] is None:
-    st.warning('Please enter your UCL email address.')
+    st.warning('Please enter your credentials.')
