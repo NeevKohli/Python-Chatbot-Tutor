@@ -128,13 +128,13 @@ if prompt := st.chat_input("Please enter your query..."):
            # st.write("If you believe this is a mistake then please contact the developers.")
             #st.stop()
 
-        os.environ['email'] = st.secrets['email']
-        os.environ['password'] = st.secrets['password']
+        # os.environ['email'] = st.secrets['TRUBICS_EMAIL']
+        # os.environ['password'] = st.secrets['password']
 
         # trubrics - collect and store user feedback
         collector = FeedbackCollector(
-            email="email",
-            password="password",
+            email= st.secrets['TRUBRICS_EMAIL'], 
+            password= st.secrets['TRUBRICS_PASSWORD'],
             project="default"
         )
 
