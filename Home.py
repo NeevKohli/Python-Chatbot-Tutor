@@ -17,16 +17,15 @@ authenticator = stauth.Authenticate(
     config['cookie']['expiry_days']
 )
 
-username, authentication_status = authenticator.login('Login', 'main')
+authenticator.login()
 
-if authentication_status == True:
-    st.write(f'Welcome *{username}*')
+if st.session_state["authentication_status"]:
     switch_page("Welcome")
 
-elif authentication_status == False:
+elif st.session_state["authentication_status"] is False:
     st.error('This UCL email address has not been granted access to this application.')
 
-elif authentication_status == None:
+elif st.session_state["authentication_status"] is None:
     st.warning('Please enter your UCL email address.')
 
 hide_pages(

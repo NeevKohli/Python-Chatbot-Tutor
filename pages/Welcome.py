@@ -17,7 +17,9 @@ authenticator = stauth.Authenticate(
     config['cookie']['expiry_days'],
 )
 
-authenticator.logout('Logout', 'main')
+authenticator.logout()
+
+st.write(f'Welcome *{st.session_state["name"]}*')
 
 image = Image.open('PyBot_Logo.png')
 st.image(image)
