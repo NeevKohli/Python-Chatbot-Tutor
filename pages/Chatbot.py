@@ -153,7 +153,7 @@ if prompt := st.chat_input("Please enter your query..."):
 # should be
 show_pages(
     [
-        Page(r"pages/Home.py", "Home", ":house:"),
+        Page(r"pages/Welcome.py", "Home", ":house:"),
         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
         Page(r"pages/Chatbot.py", "PyBot", ":snake:")
     ]

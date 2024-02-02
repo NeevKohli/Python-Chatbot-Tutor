@@ -23,7 +23,7 @@ Please click on 'Important Information' before chatting with PyBot!
 # should be
 show_pages(
     [
-        Page(r"pages/Home.py", "Home", ":house:"),
+        Page(r"pages/Welcome.py", "Home", ":house:"),
         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:")
     ]
 )

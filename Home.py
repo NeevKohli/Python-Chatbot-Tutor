@@ -17,7 +17,7 @@ username, authentication_status = authenticator.login('Login','main')
 
 if st.session_state['authentication_status']:
     st.write('Welcome *%s*' % (st.session_state['username']))
-    switch_page("Home")
+    switch_page("Welcome")
 
 elif st.session_state['authentication_status'] == False:
     st.error('The UCL email address entered has not been granted access to this application.')
