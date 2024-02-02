@@ -7,6 +7,14 @@ import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
 
+hide_pages(
+    [
+        Page(r"pages/Welcome.py", "Home", ":house:"),
+        Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
+        Page(r"pages/Chatbot.py", "PyBot", ":snake:")
+    ]
+)
+
 with open('config.yml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
@@ -27,11 +35,3 @@ elif st.session_state["authentication_status"] is False:
 
 elif st.session_state["authentication_status"] is None:
     st.warning('Please enter your UCL email address.')
-
-hide_pages(
-    [
-        Page(r"pages/Welcome.py", "Home", ":house:"),
-        Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
-        Page(r"pages/Chatbot.py", "PyBot", ":snake:")
-    ]
-)
