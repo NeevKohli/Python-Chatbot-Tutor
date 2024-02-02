@@ -7,9 +7,8 @@ from PIL import Image
 import streamlit_authenticator as stauth
 #from Main.py import *
 from trubrics.integrations.streamlit import FeedbackCollector
-
-
 import os
+
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 #To maximise throughput, parallel processing needs to be impemented to handle
@@ -134,13 +133,13 @@ if prompt := st.chat_input("Please enter your query..."):
         # trubrics - collect and store user feedback
         
         collector = FeedbackCollector(
-            project="PyBot",
+            project="default",
             email=st.secrets.TRUBRICS_EMAIL,
             password=st.secrets.TRUBRICS_PASSWORD,
         )
 
         user_feedback = collector.st_feedback(
-            component="PyBot",
+            component="default",
             feedback_type="thumbs",
             model="gpt-3.5-turbo",
             prompt_id=None,  # see prompts to log prompts and model generations
@@ -154,7 +153,7 @@ if prompt := st.chat_input("Please enter your query..."):
 # should be
 show_pages(
     [
-        Page("Home.py", "Home", ":house:"),
+        Page(r"pages/Home.py", "Home", ":house:"),
         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
         Page(r"pages/Chatbot.py", "PyBot", ":snake:")
     ]

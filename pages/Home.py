@@ -3,6 +3,7 @@ from streamlit_chat import message
 from streamlit_extras.switch_page_button import switch_page
 from st_pages import Page, show_pages, hide_pages, add_page_title
 from PIL import Image
+import streamlit_authenticator as stauth
 
 image = Image.open('PyBot_Logo.png')
 st.image(image)
@@ -22,7 +23,7 @@ Please click on 'Important Information' before chatting with PyBot!
 # should be
 show_pages(
     [
-        Page("Home.py", "Home", ":house:"),
+        Page(r"pages/Home.py", "Home", ":house:"),
         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:")
     ]
 )
