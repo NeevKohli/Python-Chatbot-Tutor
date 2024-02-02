@@ -10,7 +10,6 @@ from trubrics.integrations.streamlit import FeedbackCollector
 
 
 import os
-OPEN_API_KEY="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"
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 #To maximise throughput, parallel processing needs to be impemented to handle
@@ -128,11 +127,14 @@ if prompt := st.chat_input("Please enter your query..."):
           #  st.write("You will now been blocked from interacting with PyBot.")
            # st.write("If you believe this is a mistake then please contact the developers.")
             #st.stop()
+            
+        os.environ['email'] = st.secrets['email']
+        os.environ['password'] = st.secrets['password']
 
         # trubrics - collect and store user feedback
         collector = FeedbackCollector(
-            email="zceenko@ucl.ac.uk",
-            password="Ramkumar1968!",
+            email="email",
+            password="password",
             project="default"
         )
 
@@ -152,7 +154,7 @@ if prompt := st.chat_input("Please enter your query..."):
 show_pages(
     [
         Page("Home.py", "Home", ":house:"),
-        Page("Info.py", "Important Information", ":octagonal_sign:"),
-        Page("Chatbot.py", "PyBot", ":snake:")
+        Page("pages\Info.py", "Important Information", ":octagonal_sign:"),
+        Page("pages\Chatbot.py", "PyBot", ":snake:")
     ]
 )

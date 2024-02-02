@@ -23,13 +23,13 @@ Please click on 'Important Information' before chatting with PyBot!
 show_pages(
     [
         Page("Home.py", "Home", ":house:"),
-        Page("Info.py", "Important Information", ":octagonal_sign:")
+        Page("pages\Info.py", "Important Information", ":octagonal_sign:")
     ]
 )
 
 hide_pages(
     [
-        Page("Chatbot.py", "PyBot", ":snake:")
+        Page("pages\Chatbot.py", "PyBot", ":snake:")
     ]
 )
 
