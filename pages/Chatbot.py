@@ -127,7 +127,7 @@ if prompt := st.chat_input("Please enter your query..."):
           #  st.write("You will now been blocked from interacting with PyBot.")
            # st.write("If you believe this is a mistake then please contact the developers.")
             #st.stop()
-            
+
         os.environ['email'] = st.secrets['email']
         os.environ['password'] = st.secrets['password']
 
@@ -154,7 +154,7 @@ if prompt := st.chat_input("Please enter your query..."):
 show_pages(
     [
         Page("Home.py", "Home", ":house:"),
-        Page("pages\Info.py", "Important Information", ":octagonal_sign:"),
-        Page("pages\Chatbot.py", "PyBot", ":snake:")
+        Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
+        Page(r"pages/Chatbot.py", "PyBot", ":snake:")
     ]
 )
