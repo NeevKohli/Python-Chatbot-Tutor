@@ -5,10 +5,12 @@ credentials:
       email: zceenko@ucl.ac.uk
       logged_in: False # Will be managed automatically
       name: zceenko
+      password: zceenko
     zceemc0:
       email: zceemc0@ucl.ac.uk
       logged_in: False # Will be managed automatically
       name: zceemc0
+      password: zceemc0
 cookie:
   expiry_days: 30
   key: some_signature_key # Must be string
