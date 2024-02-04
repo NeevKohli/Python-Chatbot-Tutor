@@ -6,7 +6,6 @@ import time
 
 with st.spinner('Wait for it...'):
     time.sleep(2)
-    st.title('Loading...')
     st.success('Done!')
 
 st.title("Important Information :octagonal_sign:")

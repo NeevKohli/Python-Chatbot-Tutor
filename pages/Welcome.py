@@ -10,7 +10,6 @@ import time
 
 with st.spinner('Wait for it...'):
     time.sleep(2)
-    st.title('Loading...')
     st.success('Done!')
 
 show_pages(

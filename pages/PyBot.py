@@ -12,7 +12,6 @@ import os
 import time
 with st.spinner('Wait for it...'):
     time.sleep(2)
-    st.title('Loading...')
     st.success('Done!')
 
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
