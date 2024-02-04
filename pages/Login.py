@@ -38,7 +38,7 @@ authenticator = stauth.Authenticate(
 )
 
 #authenticator.login()
-authentication_status = authenticator.login('Login')
+authentication_status = authenticator.login()
 
 if st.session_state["authentication_status"]:
     st.write(f'Welcome *{st.session_state["name"]}*.')
