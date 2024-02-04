@@ -6,7 +6,8 @@ from PIL import Image
 import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
-import time 
+import time
+
 
 with st.spinner('Loading...'):
     time.sleep(1)
@@ -24,6 +25,7 @@ hide_pages(
         Page(r"pages/PyBot.py", "PyBot", ":snake:"),
     ]
 )
+
 
 st.write(f'Welcome *{st.session_state["name"]}*.')
 

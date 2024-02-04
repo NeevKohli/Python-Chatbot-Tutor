@@ -37,8 +37,10 @@ authenticator = stauth.Authenticate(
     config['cookie']['expiry_days']
 )
 
-authenticator.login()
+#authenticator.login()
 #authentication_status=authenticator.login('Login')
+
+name, authentication_status = authenticator.login('Login', 'main')
 
 if st.session_state["authentication_status"]:
     show_pages(
