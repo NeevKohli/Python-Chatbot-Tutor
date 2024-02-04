@@ -5,10 +5,8 @@ from st_pages import Page, show_pages, hide_pages, add_page_title
 import time
 
 with st.spinner('Wait for it...'):
-    time.sleep(10)
-    st.title('Test app')
-    st.write('1')
-    st.write('2')
+    time.sleep(2)
+    st.title('Loading...')
     st.success('Done!')
 
 st.title("Important Information :octagonal_sign:")

@@ -9,10 +9,8 @@ from yaml.loader import SafeLoader
 import time 
 
 with st.spinner('Wait for it...'):
-    time.sleep(10)
-    st.title('Test app')
-    st.write('1')
-    st.write('2')
+    time.sleep(2)
+    st.title('Loading...')
     st.success('Done!')
 
 show_pages(
