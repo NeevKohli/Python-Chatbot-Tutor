@@ -8,22 +8,22 @@ import yaml
 from yaml.loader import SafeLoader
 import time
 
-with st.spinner('Loading...'):
-    time.sleep(1)
+# with st.spinner('Loading...'):
+#     time.sleep(1)
 
-# show_pages(
-#     [
-#         Page(r"pages/Login.py", "Login", ":key:"),
-#     ]
-# )
+show_pages(
+    [
+        Page(r"pages/Login.py", "Login", ":key:"),
+    ]
+)
 
-# hide_pages(
-#     [
-#         Page(r"pages/Welcome.py", "Home", ":house:"),
-#         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
-#         Page(r"pages/PyBot.py", "PyBot", ":snake:")
-#     ]
-# )
+hide_pages(
+    [
+        Page(r"pages/Welcome.py", "Home", ":house:"),
+        Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
+        Page(r"pages/PyBot.py", "PyBot", ":snake:")
+    ]
+)
 
 ## Initialising the config file that contains all the credentials
 with open(r"pages/config.yml") as file:
@@ -38,6 +38,7 @@ authenticator = stauth.Authenticate(
 )
 
 authenticator.login()
+#authentication_status=authenticator.login('Login')
 
 if st.session_state["authentication_status"]:
     show_pages(
@@ -63,16 +64,16 @@ elif st.session_state["authentication_status"] is None:
 
 
 
-show_pages(
-    [
-        Page(r"pages/Login.py", "Login", ":key:"),
-    ]
-)
+# show_pages(
+#     [
+#         Page(r"pages/Login.py", "Login", ":key:"),
+#     ]
+# )
 
-hide_pages(
-    [
-        Page(r"pages/Welcome.py", "Home", ":house:"),
-        Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
-        Page(r"pages/PyBot.py", "PyBot", ":snake:")
-    ]
-)
+# hide_pages(
+#     [
+#         Page(r"pages/Welcome.py", "Home", ":house:"),
+#         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
+#         Page(r"pages/PyBot.py", "PyBot", ":snake:")
+#     ]
+# )
