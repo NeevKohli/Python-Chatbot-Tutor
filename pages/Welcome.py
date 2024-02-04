@@ -27,7 +27,7 @@ hide_pages(
 )
 
 
-st.write(f'Welcome *{st.session_state["name"]}*.')
+# st.write(f'Welcome *{st.session_state["name"]}*.')
 
 image = Image.open('PyBot_Logo.png')
 st.image(image)

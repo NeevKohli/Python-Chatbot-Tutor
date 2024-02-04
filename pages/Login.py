@@ -38,11 +38,10 @@ authenticator = stauth.Authenticate(
 )
 
 #authenticator.login()
-#authentication_status=authenticator.login('Login')
-
 name, authentication_status = authenticator.login('Login', 'main')
 
 if st.session_state["authentication_status"]:
+    st.write(f'Welcome *{st.session_state["name"]}*.')
     show_pages(
     [
         Page(r"pages/Login.py", "Login", ":key:"),
