@@ -9,7 +9,7 @@ from yaml.loader import SafeLoader
 import time 
 
 with st.spinner('Loading...'):
-    time.sleep(2)
+    time.sleep(1)
 
 show_pages(
     [

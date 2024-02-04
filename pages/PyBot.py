@@ -10,9 +10,9 @@ from trubrics.integrations.streamlit import FeedbackCollector
 import os
 
 import time
-with st.spinner('Wait for it...'):
-    time.sleep(2)
-    st.success('Done!')
+with st.spinner('Loading...'):
+    time.sleep(1)
+
 
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
