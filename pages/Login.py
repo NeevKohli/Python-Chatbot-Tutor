@@ -21,7 +21,7 @@ hide_pages(
     ]
 )
 
-with open('config.yml') as file:
+with open(r"pages/config.yml") as file:
     config = yaml.load(file, Loader=SafeLoader)
 
 authenticator = stauth.Authenticate(
@@ -34,10 +34,10 @@ authenticator = stauth.Authenticate(
 authenticator.login()
 
 if st.session_state["authentication_status"]:
-    switch_page("Home")
+    switch_page("Welcome")
 
 elif st.session_state["authentication_status"] is False:
-    st.error('You have not been granted access to this application.')
+    st.error('You have not been granted access to this application. Please try again with different credentials.')
 
 elif st.session_state["authentication_status"] is None:
     st.warning('Please enter your credentials.')
