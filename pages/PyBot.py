@@ -9,6 +9,8 @@ import streamlit_authenticator as stauth
 from trubrics.integrations.streamlit import FeedbackCollector
 import os
 
+import time
+
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 #To maximise throughput, parallel processing needs to be impemented to handle

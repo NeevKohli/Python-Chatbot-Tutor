@@ -6,3 +6,4 @@ openai==0.28
 Pillow
 streamlit_authenticator
 trubrics[streamlit]
+time
