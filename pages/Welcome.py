@@ -23,6 +23,19 @@ hide_pages(
 
 Logout = st.button("Logout :arrow_right:")
 if Logout:
+    show_pages(
+    [
+        Page(r"pages/Login.py", "Login", ":key:"),
+        Page(r"pages/Welcome.py", "Home", ":house:"),
+        Page(r"pages/Info.py", "Important Information", ":octagonal_sign:")
+    ]
+)
+
+    hide_pages(
+    [
+        Page(r"pages/PyBot.py", "PyBot", ":snake:"),
+    ]
+)
     switch_page("Login")
 
 st.write(f'Welcome *{st.session_state["name"]}*.')
