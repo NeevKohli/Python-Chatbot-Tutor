@@ -17,7 +17,7 @@ st.markdown("""
 # should be
 show_pages(
     [
-        Page(r"pages/Welcome.py", "Welcome", ":house:"),
+        Page(r"pages/Welcome.py", "Home", ":house:"),
         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
         Page(r"pages/PyBot.py", "PyBot", ":snake:")
     ]
@@ -29,9 +29,9 @@ hide_pages(
     ]    
 )
 
-Home = st.button("Welcome :house:")
+Home = st.button("Home :house:")
 if Home:
-    switch_page("Welcome")
+    switch_page("Home")
 
 Chatbot = st.button("PyBot :snake:")
 if Chatbot:

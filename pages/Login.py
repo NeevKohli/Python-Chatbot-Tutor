@@ -10,12 +10,12 @@ from yaml.loader import SafeLoader
 show_pages(
     [
         Page(r"pages/Login.py", "Login", ":key:"),
+        Page(r"pages/Welcome.py", "Home", ":house:"),
     ]
 )
 
 hide_pages(
     [
-        Page(r"pages/Welcome.py", "Welcome", ":house:"),
         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
         Page(r"pages/PyBot.py", "PyBot", ":snake:")
     ]
@@ -34,7 +34,7 @@ authenticator = stauth.Authenticate(
 authenticator.login()
 
 if st.session_state["authentication_status"]:
-    switch_page("Welcome")
+    switch_page("Home")
 
 elif st.session_state["authentication_status"] is False:
     st.error('You have not been granted access to this application. Please try again with different credentials.')
