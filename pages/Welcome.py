@@ -21,10 +21,6 @@ hide_pages(
     ]
 )
 
-Logout = st.button("Logout :arrow_right:")
-if Logout:
-    switch_page("Login")
-
 st.write(f'Welcome *{st.session_state["name"]}*.')
 
 image = Image.open('PyBot_Logo.png')
@@ -43,6 +39,10 @@ Please click on 'Important Information' before chatting with PyBot!
 
 # Specify what pages should be shown in the sidebar, and what their titles and icons
 # should be
+
+Logout = st.button("Logout :arrow_right:")
+if Logout:
+    switch_page("Login")
 
 Info = st.button("Important Information :octagonal_sign:")
 if Info:
