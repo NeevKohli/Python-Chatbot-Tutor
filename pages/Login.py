@@ -34,7 +34,7 @@ authenticator = stauth.Authenticate(
 authenticator.login()
 
 if st.session_state["authentication_status"]:
-    switch_page("Welcome")
+    switch_page("Home")
 
 elif st.session_state["authentication_status"] is False:
     st.error('You have not been granted access to this application. Please try again with different credentials.')
