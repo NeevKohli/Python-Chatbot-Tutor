@@ -5,8 +5,7 @@ from st_pages import Page, show_pages, hide_pages, add_page_title
 import time
 
 with st.spinner('Wait for it...'):
-    time.sleep(2)
-    st.success('Done!')
+    time.sleep(1)
 
 st.title("Important Information :octagonal_sign:")
 st.markdown("""

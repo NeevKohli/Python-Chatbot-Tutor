@@ -26,9 +26,11 @@ hide_pages(
     ]
 )
 
+## Initialising the config file that contains all the credentials
 with open(r"pages/config.yml") as file:
     config = yaml.load(file, Loader=SafeLoader)
 
+## initialising a new authenticator to get the credentials from the .yaml file
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
