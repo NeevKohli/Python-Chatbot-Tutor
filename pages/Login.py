@@ -8,23 +8,22 @@ import yaml
 from yaml.loader import SafeLoader
 import time
 
-with st.spinner('Wait for it...'):
-    time.sleep(2)
-    st.success('Done!')
+with st.spinner('Loading ...'):
+    time.sleep(1)
 
-show_pages(
-    [
-        Page(r"pages/Login.py", "Login", ":key:"),
-    ]
-)
+# show_pages(
+#     [
+#         Page(r"pages/Login.py", "Login", ":key:"),
+#     ]
+# )
 
-hide_pages(
-    [
-        Page(r"pages/Welcome.py", "Home", ":house:"),
-        Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
-        Page(r"pages/PyBot.py", "PyBot", ":snake:")
-    ]
-)
+# hide_pages(
+#     [
+#         Page(r"pages/Welcome.py", "Home", ":house:"),
+#         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
+#         Page(r"pages/PyBot.py", "PyBot", ":snake:")
+#     ]
+# )
 
 ## Initialising the config file that contains all the credentials
 with open(r"pages/config.yml") as file:
@@ -60,3 +59,20 @@ elif st.session_state["authentication_status"] is False:
 
 elif st.session_state["authentication_status"] is None:
     st.warning('Please enter your credentials.')
+
+
+
+
+show_pages(
+    [
+        Page(r"pages/Login.py", "Login", ":key:"),
+    ]
+)
+
+hide_pages(
+    [
+        Page(r"pages/Welcome.py", "Home", ":house:"),
+        Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
+        Page(r"pages/PyBot.py", "PyBot", ":snake:")
+    ]
+)

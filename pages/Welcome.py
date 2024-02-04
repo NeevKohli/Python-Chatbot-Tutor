@@ -8,9 +8,8 @@ import yaml
 from yaml.loader import SafeLoader
 import time 
 
-with st.spinner('Wait for it...'):
+with st.spinner('Loading...'):
     time.sleep(2)
-    st.success('Done!')
 
 show_pages(
     [
@@ -45,10 +44,11 @@ Please click on 'Important Information' before chatting with PyBot!
 # Specify what pages should be shown in the sidebar, and what their titles and icons
 # should be
 
-Logout = st.button("Logout :arrow_right:")
-if Logout:
-    switch_page("Login")
 
 Info = st.button("Important Information :octagonal_sign:")
 if Info:
     switch_page("Important Information")
+
+Logout = st.button("Logout :arrow_right:")
+if Logout:
+    switch_page("Login")
