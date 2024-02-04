@@ -6,6 +6,14 @@ from PIL import Image
 import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
+import time 
+
+with st.spinner('Wait for it...'):
+    time.sleep(10)
+    st.title('Test app')
+    st.write('1')
+    st.write('2')
+    st.success('Done!')
 
 show_pages(
     [

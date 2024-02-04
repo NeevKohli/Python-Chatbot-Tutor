@@ -2,6 +2,14 @@ import streamlit as st
 from streamlit_chat import message
 from streamlit_extras.switch_page_button import switch_page
 from st_pages import Page, show_pages, hide_pages, add_page_title
+import time
+
+with st.spinner('Wait for it...'):
+    time.sleep(10)
+    st.title('Test app')
+    st.write('1')
+    st.write('2')
+    st.success('Done!')
 
 st.title("Important Information :octagonal_sign:")
 st.markdown("""
