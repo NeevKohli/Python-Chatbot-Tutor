@@ -9,8 +9,6 @@ with st.spinner('Loading ...'):
 
 st.title("Important Information :octagonal_sign:")
 st.markdown("""
-    Disclaimer: PyBot is GDPR compliant. All users will remain anonymous and all inputs provided to PyBot will not be used for further training. Please refer to Dr. Alejandra Beghelli for further information.
-
     Terms of Service (ToS): PyBot should only be used for summative assessments in accordance with UCL policy (https://www.ucl.ac.uk/students/exams-and-assessments/assessment-success-guide/engaging-ai-your-education-and-assessment). PyBot does not condone, incite and/or generates inappropriate content that violates OpenAIs usage policies (https://openai.com/policies/usage-policies).
     By using this application, you acknowledge the Disclaimer and agree to abide by the ToS.
     """)
