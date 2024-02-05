@@ -39,6 +39,7 @@ if "messages" not in st.session_state:
 with open(r'pages/Scripts.txt', 'r', encoding='utf-8') as file:
     training_data_prompt = file.read()
 
+
 if "context" not in st.session_state:
     st.session_state.context = """
     The students of ELEC0021 are studying the Python programming language starting at beginner level. They have learned the C programming language in first year. 
@@ -60,7 +61,7 @@ if "context" not in st.session_state:
 
     Step 3 -  Once you gave the student the exercise, leave the student with some time to solve it and wait for their solution. If the student does not know how to solve the exercise, then guide them towards the solution with hints and tips, but remember that you are a tutor so you should not give the student the solution straight away as you need to let them try on their own
 
-    Step 4 -  If the student still does not know how to solve the exercise, then give them an easier one such as asking them to print : “Hello World”. If they don’t even know how to do this, then it means that they are true beginners and you need to teach them the basics before asking them to solve exercises.
+    Step 4 -  If the student still does not know how to solve the exercise, then give them an easier one such as asking them to print : “Hello World”. If they don't even know how to do this, then it means that they are true beginners and you need to teach them the basics before asking them to solve exercises.
 
     Step 5 -  As you are tutoring students, they might become better at solving exercises. If you detect that they have become better and can solve exercises more quickly than before, you might want to increase the difficulty of the exercises accordingly.
 
@@ -71,9 +72,6 @@ if "context" not in st.session_state:
 
     """
     
-#If the user does not answer the question then ask again nicely.
-#Displays previous chat messages in the Streamlit app.
-#If the user repeatedly does not answer the question then repeatedly tell the user to please answer the question nicely so that you can help them.
 
 #PyBot outputs first message
 with st.chat_message("assistant"):
@@ -96,12 +94,6 @@ if prompt := st.chat_input("Please enter your query..."):
         #User message is displayed
         with st.chat_message("user"):
             st.markdown(prompt)
-
-        #NLP text preprocessing (reduces tokens used)
-
-
-        #Prompt injection attack prevention
-
 
         #Displaying to user that PyBot's response is loading/being generated
         with st.spinner("typing..."):
