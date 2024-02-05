@@ -147,10 +147,12 @@ if prompt := st.chat_input("Please enter your query..."):
             component="default",
             feedback_type="thumbs",
             model="gpt-3.5-turbo",
+            metadata= {"prompt": prompt, "response":response.choices[0].message["content"]},
             prompt_id=None,  # see prompts to log prompts and model generations
-            open_feedback_label='Please enter your feedback here'
+            open_feedback_label='[Optional]Please enter your feedback here'
         )
 
+    
         if user_feedback:
              st.write(user_feedback)    
 
