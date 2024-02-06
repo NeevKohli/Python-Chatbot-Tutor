@@ -9,7 +9,7 @@ from yaml.loader import SafeLoader
 import time
 
 with st.spinner('Loading...'):
-     time.sleep(1)
+     time.sleep(3)
 
 show_pages(
     [
@@ -25,7 +25,9 @@ hide_pages(
     ]
 )
 
+
 ## Initialising the config file that contains all the credentials
+
 with open(r"pages/config.yml") as file:
     config = yaml.load(file, Loader=SafeLoader)
 
@@ -42,6 +44,7 @@ authentication_status = authenticator.login()
 
 if st.session_state["authentication_status"]:
     st.write(f'Welcome *{st.session_state["name"]}*.')
+    time.sleep(3)
     show_pages(
     [
         Page(r"pages/Login.py", "Login", ":key:"),
@@ -61,20 +64,3 @@ elif st.session_state["authentication_status"] is False:
 
 elif st.session_state["authentication_status"] is None:
     st.warning('Please enter your credentials.')
-
-
-
-
-# show_pages(
-#     [
-#         Page(r"pages/Login.py", "Login", ":key:"),
-#     ]
-# )
-
-# hide_pages(
-#     [
-#         Page(r"pages/Welcome.py", "Home", ":house:"),
-#         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:"),
-#         Page(r"pages/PyBot.py", "PyBot", ":snake:")
-#     ]
-# )

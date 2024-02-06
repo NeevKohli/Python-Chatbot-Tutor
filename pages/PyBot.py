@@ -8,11 +8,14 @@ import streamlit_authenticator as stauth
 #from Main.py import *
 from trubrics.integrations.streamlit import FeedbackCollector
 import os
-
 import time
-with st.spinner('Loading...'):
-    time.sleep(1)
+import streamlit_feedback
+from langsmith import Client
 
+#ADD CACHING DECORATORS ABOVE CODE BLOCKS (AFTER CONVERTING TO FUNCTIONS THAT ARE CALLED LATER)
+
+with st.spinner('Loading...'):
+    time.sleep(3)
 
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
@@ -28,14 +31,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 #Initialises session state variables, including the OpenAI model and chat messages.
-
-#Sets the initial context for the chatbot. This provides information about the students and the Python course
-
-#Prompt-Engineering - context
-
-#Training file injection is fine-tuning - summary of topic 1 slide transcripts
-
-#Chain-of-thought - guiding the chatbot on how to structure their response.
+    
 with open(r'pages/Scripts.txt', 'r', encoding='utf-8') as file:
     training_data_prompt = file.read()
 
@@ -124,32 +120,22 @@ if prompt := st.chat_input("Please enter your query..."):
            # st.write("If you believe this is a mistake then please contact the developers.")
             #st.stop()
 
-        # os.environ['email'] = st.secrets['TRUBICS_EMAIL']
-        # os.environ['password'] = st.secrets['password']
+        # Collect and store user feedback in LangSmith
+            
+        os.environ['LANGCHAIN_ENDPOINT'] = st.secrets['LANGCHAIN_ENDPOINT']
+        os.environ['LANGCHAIN_API_KEY'] = st.secrets['LANGCHAIN_API_KEY']
+            
+        feedback_option = "faces" if st.toggle(label="`Thumbs` ⇄ `Faces`", value=False) else "thumbs"
 
-        # trubrics - collect and store user feedback
+        if st.session_state.get("run_id"):
+            feedback = streamlit_feedback(
+                feedback_type=feedback_option,  # Apply the selected feedback style
+                optional_text_label="[Optional] Please provide an explanation",  # Allow for additional comments
+                key=f"feedback_{st.session_state.run_id}",
+            )
         
-        collector = FeedbackCollector(
-            project="default",
-            email=st.secrets.TRUBRICS_EMAIL,
-            password=st.secrets.TRUBRICS_PASSWORD,
-        )
+        client = Client(api_url=st.secrets.LANGCHAIN_ENDPOINT, api_key=st.secrets.LANGCHAIN_API_KEY)
 
-        user_feedback = collector.st_feedback(
-            component="default",
-            feedback_type="thumbs",
-            model="gpt-3.5-turbo",
-            metadata= {"prompt": prompt, "response":response.choices[0].message["content"]},
-            prompt_id=None,  # see prompts to log prompts and model generations
-            open_feedback_label='[Optional]Please enter your feedback here'
-        )
-
-    
-        if user_feedback:
-             st.write(user_feedback)    
-
-# Specify what pages should be shown in the sidebar, and what their titles and icons
-# should be
 show_pages(
     [
         Page(r"pages/Welcome.py", "Home", ":house:"),

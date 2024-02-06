@@ -6,3 +6,8 @@ openai==0.28
 Pillow
 streamlit_authenticator
 trubrics[streamlit]
+LangChain
+LangSmith
+streamlit_feedback
+tiktoken
+chromadb

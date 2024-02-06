@@ -5,12 +5,16 @@ from st_pages import Page, show_pages, hide_pages, add_page_title
 import time
 
 with st.spinner('Loading ...'):
-    time.sleep(1)
+    time.sleep(3)
 
 st.title("Important Information :octagonal_sign:")
 st.markdown("""
-    Terms of Service (ToS): PyBot should only be used for summative assessments in accordance with UCL policy (https://www.ucl.ac.uk/students/exams-and-assessments/assessment-success-guide/engaging-ai-your-education-and-assessment). PyBot does not condone, incite and/or generates inappropriate content that violates OpenAIs usage policies (https://openai.com/policies/usage-policies).
-    By using this application, you acknowledge the Disclaimer and agree to abide by the ToS.
+    Disclaimer: User feedback is extremely valuable to us as developers.
+    When interacting with PyBot, you will be prompted to provide optional feedback after every response. 
+    If you choose to submit feedback then this will be anonymously recorded and analysed for research purposes. 
+
+    Terms of Service (ToS): PyBot will only be used in accordance with UCL policy (https://www.ucl.ac.uk/students/exams-and-assessments/assessment-success-guide/engaging-ai-your-education-and-assessment). 
+    OpenAIs usage policies (https://openai.com/policies/usage-policies) will be abided by at all times whilst using PyBot.
     """)
 
 #check if username is text before proceeding (it cannot be alphanumeric)

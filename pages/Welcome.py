@@ -10,7 +10,7 @@ import time
 
 
 with st.spinner('Loading...'):
-    time.sleep(1)
+    time.sleep(3)
 
 show_pages(
     [
@@ -26,9 +26,6 @@ hide_pages(
     ]
 )
 
-
-# st.write(f'Welcome *{st.session_state["name"]}*.')
-
 image = Image.open('PyBot_Logo.png')
 st.image(image)
 st.title("Welcome to PyBot!")
@@ -40,12 +37,6 @@ We encourage you to use PyBot freely and as often as you like during the beta-te
 Please click on 'Important Information' before chatting with PyBot!
 """
 )
-
-#check if username is text before proceeding (it cannot be alphanumeric)
-
-# Specify what pages should be shown in the sidebar, and what their titles and icons
-# should be
-
 
 Info = st.button("Important Information :octagonal_sign:")
 if Info:
