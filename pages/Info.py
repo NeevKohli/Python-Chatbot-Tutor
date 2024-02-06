@@ -4,9 +4,6 @@ from streamlit_extras.switch_page_button import switch_page
 from st_pages import Page, show_pages, hide_pages, add_page_title
 import time
 
-with st.spinner('Loading ...'):
-    time.sleep(3)
-
 st.title("Important Information :octagonal_sign:")
 st.markdown("""
     Disclaimer: User feedback is extremely valuable to us as developers.

@@ -14,9 +14,6 @@ from langsmith import Client
 
 #ADD CACHING DECORATORS ABOVE CODE BLOCKS (AFTER CONVERTING TO FUNCTIONS THAT ARE CALLED LATER)
 
-with st.spinner('Loading...'):
-    time.sleep(3)
-
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 #To maximise throughput, parallel processing needs to be impemented to handle
@@ -124,17 +121,50 @@ if prompt := st.chat_input("Please enter your query..."):
             
         os.environ['LANGCHAIN_ENDPOINT'] = st.secrets['LANGCHAIN_ENDPOINT']
         os.environ['LANGCHAIN_API_KEY'] = st.secrets['LANGCHAIN_API_KEY']
-            
-        feedback_option = "faces" if st.toggle(label="`Thumbs` ⇄ `Faces`", value=False) else "thumbs"
+        os.environ['LANGCHAIN_TRACING_V2'] = 'true'
+        os.environ['LANGCHAIN_PROJECT'] = 'User Feedback'
 
+        feedback_option = "faces" if st.toggle(label="`Thumbs` ⇄ `Faces`", value=False) else "thumbs"
+            
         if st.session_state.get("run_id"):
             feedback = streamlit_feedback(
-                feedback_type=feedback_option,  # Apply the selected feedback style
-                optional_text_label="[Optional] Please provide an explanation",  # Allow for additional comments
+                feedback_type=feedback_option,
+                optional_text_label="[Optional] Please provide an explanation",
                 key=f"feedback_{st.session_state.run_id}",
             )
-        
-        client = Client(api_url=st.secrets.LANGCHAIN_ENDPOINT, api_key=st.secrets.LANGCHAIN_API_KEY)
+
+            # Define score mappings for both "thumbs" and "faces" feedback systems
+            score_mappings = {
+                "thumbs": {"👍": 1, "👎": 0},
+                "faces": {"😀": 1, "🙂": 0.75, "😐": 0.5, "🙁": 0.25, "😞": 0},
+            }
+
+            # Get the score mapping based on the selected feedback option
+            scores = score_mappings[feedback_option]
+
+            if feedback:
+                # Get the score from the selected feedback option's score mapping
+                score = scores.get(feedback["score"])
+
+                if score is not None:
+                    # Formulate feedback type string incorporating the feedback option
+                    # and score value
+                    feedback_type_str = f"{feedback_option} {feedback['score']}"
+
+                    # Record the feedback with the formulated feedback type string
+                    # and optional comment
+                    feedback_record = Client.create_feedback(
+                        st.session_state.run_id,
+                        feedback_type_str,
+                        score=score,
+                        comment=feedback.get("text"),
+                    )
+                    st.session_state.feedback = {
+                        "feedback_id": str(feedback_record.id),
+                        "score": score,
+                    }
+                else:
+                    st.warning("Invalid feedback score.")
 
 show_pages(
     [

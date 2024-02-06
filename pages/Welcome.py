@@ -8,10 +8,6 @@ import yaml
 from yaml.loader import SafeLoader
 import time
 
-
-with st.spinner('Loading...'):
-    time.sleep(3)
-
 show_pages(
     [
         Page(r"pages/Login.py", "Login", ":key:"),
