@@ -8,9 +8,6 @@ import yaml
 from yaml.loader import SafeLoader
 import time
 
-with st.spinner('Loading...'):
-     time.sleep(3)
-
 show_pages(
     [
         Page(r"pages/Login.py", "Login", ":key:"),
@@ -28,8 +25,13 @@ hide_pages(
 
 ## Initialising the config file that contains all the credentials
 
-with open(r"pages/config.yml") as file:
-    config = yaml.load(file, Loader=SafeLoader)
+@st.cache_data
+def open_config():
+    with open(r"pages/config.yml") as file:
+        config = yaml.load(file, Loader=SafeLoader)
+        return config
+
+config = open_config()
 
 ## initialising a new authenticator to get the credentials from the .yaml file
 authenticator = stauth.Authenticate(
@@ -43,8 +45,6 @@ authenticator = stauth.Authenticate(
 authentication_status = authenticator.login()
 
 if st.session_state["authentication_status"]:
-    st.write(f'Welcome *{st.session_state["name"]}*.')
-    time.sleep(3)
     show_pages(
     [
         Page(r"pages/Login.py", "Login", ":key:"),
