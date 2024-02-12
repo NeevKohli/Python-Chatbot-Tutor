@@ -1,0 +1,238 @@
+Declaring_variables = 
+“Example: 
+Text type (str): name=”Ben” , letter=”c”
+Numeric type
+•	(int): x=3
+•	(float): y=3.5
+•	Sequence (list): names=[“Zhang”, “Smith”, “Singh”]
+•	Boolean (bool): a=TRUE
+From C to Python: Using operators
+In C we use:
+•	= (assignment)
+•	+ - * / % ** // (arithmetic)
+•	== != < > <= >= (comparison)
+•	not and or (logical)
+In Python we use:
+•	= (assignment)
+•	+ - * / % ** // (arithmetic)
+•	== != < > <= >=  (comparison)
+•	not and or (logical)
+<Give examples such as the ones below>
+Exponentiation:
+x=2**3 #x stores the value 8 (2^3)
+Integer part of division: 
+x= 5//4 #x stores the value 1 (integer part of 1.25)
+Logical:
+if(x>3 and x<5)”
+Flow control = “
+In Python we only have:
+•	If-else
+<Give examples such as below, comparing Python to C>
+Python language:
+i=0
+while(i<5):
+i=i+1
+print(i)
+C language:
+i=0;
+while (i<5)
+{
+i=i+1;
+printf(“%d\n”,i);
+} 
+C language:
+if (x>3 && x<5)
+{
+printf(“x is in range\n”); x=x+1;
+}
+else
+{
+printf(“Not in range”);
+}
+Python language:
+if (x>3 and x<5):
+print(“x is in range\n”)
+x=x+1
+else:
+print(“Not in range”)
+<Give examples such as the one below>
+For loop example 1:
+C language: 
+char x[11]="Programming"; 
+int c; 
+for(c=0; c)
+printf("%c\n",x[c]);
+Python language:
+x="Programming"
+for c in x:
+print(c)
+For loop example 2:
+C language:
+int i;
+for(i=0; c<6; i++)
+printf("%d\n",i);
+Python language:
+for i in range(6):
+print(i)”
+Functions = 
+“In C we use printf() and scanf() while in Python we use print() and input() 
+<Give some examples of Input/output like the ones below>
+Example 1:
+C language:
+#include <stdio.h>
+…
+int x=3;
+char c=“Z”;
+printf(“Hello\n”);
+printf(“x stores number %d\n”, x);
+printf(“c stores character %c\n”, c);
+Python language:
+x=3
+c=“Z”
+print(“Hello”)
+print(“x stores number “+str(x))
+Print(“c stores character “+c)
+Example 2:
+C language:
+#include <stdio.h>
+…
+char name[10];
+printf("Please, enter your name\n");
+scanf("%s", &name);
+printf("Name entered: %s\n", name);
+
+Python language:
+print("Please, enter your name")
+name=input()
+print("Name entered: "+name)”
+
+Your Own Functions =
+“In C we define functions in the following way:
+ftype fname(type1 arg_name1, type2 arg_name2, …)
+{
+instruction 1;
+instruction 2;
+…
+return v1 //return if ftype!=void, only 1 value
+} 
+In the code above:
+ftype: data type of the value returned by the function
+fname: name of the function
+typeK: type of the K-th input argument
+arg_nameK: name of the K-th ainput argument
+In Python we define the same function as:
+def fname(arg_name1, arg_name2, …):
+instruction 1
+instruction 2
+…
+return v1, v2, … #return is optional
+where def is the reserved word, fname is the function name and inside the arguments we only put the input argument. 
+<Give examples on writing functions showing also the differences between C and Python as shown below>
+In C: 
+int sum (int a, int b)
+{
+return a+b;
+} 
+In Python:
+def sum (a, b):
+return a+b
+The programme structure =
+“<Give example of the programme structure in C and Python as below>
+#include <stdio.h>
+float circle_area(float r)
+{
+return 3.14*r*r;
+}
+float circle_perimeter(float r)
+{
+return 2*3.14*5;
+}
+int main()
+{
+float r, area, perimeter;
+printf(“Please, enter radious:\n”);
+scanf(“%f”, &r);
+area=circle_area(r);
+perimeter=circle_perimeter(r);
+printf(“The area is %f\n”, area);
+printf(“The perimeter is %f\n”, perimeter);
+}
+
+def circle_prop(r):
+area=3.14*r*r;
+perimeter=2*3.14*r
+return area, perimeter”
+Exception_Handling = “ Explain what exeptions are.
+Example 1:
+“””
+print("Please, enter a number:") 
+x=int(input()) 
+x=x+6 
+print(x)
+“””
+<Give examples similar to example 1>
+Explain the different kinds of exceptions like ValueError in Python
+<Give examples similar to the examples below, explaining the structure of the code>
+try:
+print("Please, enter a number:")
+x=int(input())
+x=x+6
+print(x)
+except:
+print(“You have not entered a number”)
+try:
+print("Please, enter a number between 1 and 10:")
+x=int(input())
+if (x<1 or x>10):
+		raise IndexError
+x=x+6
+print(x)
+except ValueError:
+print("You have not entered a number")
+except IndexError:
+print("Number out of range")“
+Additional_aspects = “
+<Teach the students on how to create lists and show them different examples of creating lists, accessing elements in a list, adding, removing elements in a list and iterating over a list and propose exercises so that they can practice>
+-Controlling programme execution: 
+The special variable __name__ in Python plays a crucial role in determining how a script is being executed. When you run a Python file directly, the __name__ variable is set to __main__, indicating that the script is the main program being executed. However, if a Python file is imported as a module into another script, the __name__ variable is set to the name of the file (module) being imported.
+<Give students examples of how to use __name__ making use of FILE_ONE.PY and FILE_TWO.PY>
+<FILE_ONE.PY>
+import file_two
+print("File one __name__ is set to: {}"
+.format(__name__))
+def A():
+print("Function A in file one executed")
+if __name__=="__main__":
+print("File one being called")
+A()
+else:
+print("File one being imported")
+file_two.C()
+
+
+<FILE_TWO.PY>
+print("File two __name__ is set to: {}"
+.format(__name__))
+def B():
+print("Function B in file two executed")
+def C():
+print("Function C in file two executed")
+if __name__=="__main__":
+print("File two being called")
+B()
+else:
+print("File two being imported")
+C() 
+- Command line input arguments: 
+<Provide examples like the one below and explain how the code works by going through the different cases of inputting numbers>
+Import sys
+if len(sys.argv) != 3:
+	Print(“You need to write 2 numbers after main.py”)
+else:
+	a=sys.argv[1]
+	b=sys.argv[2]
+print(str(int(a)*int(b)))
+”
+
+
+
