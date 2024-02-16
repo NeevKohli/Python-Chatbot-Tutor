@@ -8,5 +8,4 @@ streamlit_authenticator
 streamlit
 openai
 llama-index
-nltk
 pypdf
