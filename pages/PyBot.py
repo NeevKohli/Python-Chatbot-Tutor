@@ -1,10 +1,11 @@
+# import openai
+# from PIL import Image
+# import streamlit_authenticator as stauth
 import streamlit as st
-from streamlit_chat import message
-from streamlit_extras.switch_page_button import switch_page
+# from streamlit_chat import message
+# from streamlit_extras.switch_page_button import switch_page
 from st_pages import Page, show_pages, hide_pages, add_page_title
-import openai
-from PIL import Image
-import streamlit_authenticator as stauth
+
 #from Main.py import *
 #from trubrics.integrations.streamlit import FeedbackCollector
 import os
@@ -33,7 +34,7 @@ if "messages" not in st.session_state.keys(): # Initialize the chat messages his
         {"role": "assistant", "content": "Ask me a question about Introduction to procedural Python!"}
     ]
 
-prompt = """Your role is to help students learn the Python programming language. 
+prompt = """Your role is to help students learn the Python programming language, specifically introduction to procedural Python.
 Setting up the student level detection procedure - please only follow this procedure once 
 Please follow the TWO steps below ONLY ONCE.
 
@@ -45,6 +46,7 @@ Advanced: knows all topics.
 
 Step 2:
 If the student does not know what level of Python knowledge they have, then give them ONE beginner/intermediate exercise in order to detect their level. 
+
 Once you have detected the Python knowledge level of the student, follow the FOUR rules below AT ALL TIMES.
 
 Rule 1:
@@ -73,7 +75,7 @@ def load_data():
     with st.spinner(text="Loading and indexing the Python docs - hang tight! This should take 1-2 minutes."):
         reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
         docs = reader.load_data()
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-4", temperature=0))
+        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0))
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
         return index
 
