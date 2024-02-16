@@ -7,6 +7,6 @@ Pillow
 streamlit_authenticator
 streamlit
 openai
-llama-index
+llama-index==0.10.1
 pypdf
 nltk
