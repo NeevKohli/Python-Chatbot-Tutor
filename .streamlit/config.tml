@@ -1,0 +1,11 @@
+[global]
+
+disableWatchdogWarning = true
+
+disableWidgetStateDuplicationWarning = true
+
+showWarningOnDirectExecution = false
+
+[client]
+
+showErrorDetails = true
