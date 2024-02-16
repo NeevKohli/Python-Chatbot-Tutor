@@ -17,6 +17,7 @@ from llama_index.llms.openai import OpenAI
 from llama_index.core.memory import ChatMemoryBuffer
 
 import nltk
+nltk.download('stopwords')
 
 #ADD CACHING DECORATORS ABOVE CODE BLOCKS (AFTER CONVERTING TO FUNCTIONS THAT ARE CALLED LATER)
 #openai.api_key = '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'
