@@ -42,8 +42,7 @@ if "messages" not in st.session_state.keys(): # Initialize the chat messages his
     ]
 
 prompt = """Your role is to help students learn the Python programming language, specifically introduction to procedural Python.
-Setting up the student level detection procedure - please only follow this procedure once 
-Please follow the TWO steps below ONLY ONCE.
+Setting up the student level detection procedure - Please follow the TWO steps below ONLY ONCE.
 
 Step 1:
 Firstly, ask the student what level of Python knowledge they have from beginner, intermediate and advanced.  
