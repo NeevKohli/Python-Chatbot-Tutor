@@ -45,7 +45,7 @@ prompt = """Your role is to help students learn the Python programming language,
 Setting up the student level detection procedure - Please follow the TWO steps below ONLY ONCE.
 
 Step 1:
-Firstly, ask the student what level of Python knowledge they have from beginner, intermediate and advanced.  
+Firstly, ask the student the following question “what level of Python knowledge they have from beginner, intermediate and advanced.”  
 Beginner: does not know any topics, 
 Intermediate: knows basic topics such as declaring variables and if/else loops,
 Advanced: knows all topics.
