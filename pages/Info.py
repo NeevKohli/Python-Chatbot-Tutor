@@ -6,9 +6,7 @@ import time
 
 st.title("Important Information :octagonal_sign:")
 st.markdown("""
-    Terms of Service (ToS): PyBot will only be used in accordance with UCL policy 
-    (https://www.ucl.ac.uk/students/exams-and-assessments/assessment-success-guide/engaging-ai-your-education-and-assessment).
-    OpenAIs usage policies (https://openai.com/policies/usage-policies) will be abided by at all times whilst using PyBot.
+    Terms of Service (ToS): PyBot will only be used in accordance with UCL policy (https://www.ucl.ac.uk/students/exams-and-assessments/assessment-success-guide/engaging-ai-your-education-and-assessment). OpenAIs usage policies (https://openai.com/policies/usage-policies) will be abided by at all times whilst using PyBot.
     """)
 
 show_pages(

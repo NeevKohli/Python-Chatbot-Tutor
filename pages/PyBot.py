@@ -22,20 +22,19 @@ st.title("PyBot :snake:")
         
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hi! I'm PyBot. I'm here to help you learn Python. Before we begin, are you a beginner, intermediate or advanced?"}
+        {"role": "assistant", "content": "Hi! I'm PyBot. I'm here to help you learn Python."}
     ]
 
 prompt = """Your role is to help students learn the Python programming language, specifically, introduction to procedural Python.
 
-The different Python knowledge levels are defined below.
-
-Beginner: Does not know any topics.
-Intermediate: Knows basic topics such as declaring variables and if/else loops.
-Advanced: Knows all topics.
-
 Setting up the student level detection procedure - Please follow the THREE steps below ONLY ONCE.
 
 Step 1:
+The different Python knowledge levels are defined below.
+Beginner: Does not know any topics.
+Intermediate: Knows basic topics such as declaring variables and if/else loops.
+Advanced: Knows all topics.
+Ask this in order to get the Python knowledge level of the student "Before we begin, are you a beginner, intermediate or advanced?".
 If the student has input their Python knowledge level, then proceed to Step 3.
 Else, go to Step 2.
 

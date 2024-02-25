@@ -10,7 +10,6 @@ import time
 
 show_pages(
     [
-        Page(r"pages/Login.py", "Login", ":key:"),
         Page(r"pages/Welcome.py", "Home", ":house:"),
         Page(r"pages/Info.py", "Important Information", ":octagonal_sign:")
     ]
@@ -18,6 +17,7 @@ show_pages(
 
 hide_pages(
     [
+        Page(r"pages/Login.py", "Login", ":key:"),
         Page(r"pages/PyBot.py", "PyBot", ":snake:"),
     ]
 )
