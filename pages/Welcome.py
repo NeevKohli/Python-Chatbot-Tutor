@@ -22,11 +22,12 @@ hide_pages(
     ]
 )
 
-# st.write(f'Welcome *{st.session_state["name"]}*.')
-
 image = Image.open('PyBot_Logo.png')
+
 st.image(image)
+
 st.title("Welcome to PyBot!")
+
 st.markdown("""
 The aim of PyBot is to tutor students enrolled on the ELEC0021 module on the Python programming langauge - specifically, the Week 1 Topic (Introduction to Procedural Python).
 It's powered by the OpenAI API 'gpt-3.5-turbo' model (the brain behind ChatGPT) and its been trained on teaching resources :books:.
@@ -36,10 +37,6 @@ Please click on 'Important Information' before chatting with PyBot!
 """
 )
 
-Info = st.button("Important Information :octagonal_sign:")
-if Info:
-    switch_page("Important Information")
-
-# Logout = st.button("Logout :arrow_right:")
-# if Logout:
-#     switch_page("Login")
+#Info = st.button("Important Information :octagonal_sign:")
+#if Info:
+#    switch_page("Important Information")

@@ -23,17 +23,16 @@ hide_pages(
 )
 
 
-## Initialising the config file that contains all the credentials
-
+# Initialising the config file that contains all the credentials
 @st.cache_data
 def open_config():
-    with open(r"pages/config.yml") as file:
+    with open(r"./config.yml") as file:
         config = yaml.load(file, Loader=SafeLoader)
         return config
 
 config = open_config()
 
-## initialising a new authenticator to get the credentials from the .yaml file
+# Initialising a new authenticator to get the credentials from the .yaml file
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
@@ -41,7 +40,6 @@ authenticator = stauth.Authenticate(
     config['cookie']['expiry_days']
 )
 
-#authenticator.login()
 authentication_status = authenticator.login()
 
 if st.session_state["authentication_status"]:
@@ -60,7 +58,7 @@ if st.session_state["authentication_status"]:
     switch_page("Home")
 
 elif st.session_state["authentication_status"] is False:
-    st.error('You have not been granted access to this application. Please try again with different credentials.')
+    st.error('Username and/or password incorrect. Please try again.')
 
 elif st.session_state["authentication_status"] is None:
     st.warning('Please enter your credentials.')

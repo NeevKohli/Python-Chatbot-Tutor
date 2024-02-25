@@ -1,0 +1,41 @@
+credentials:
+  usernames:
+    zceenko:
+      email: zceenko@ucl.ac.uk
+      logged_in: False # Will be managed automatically
+      name: zceenko
+      password: zceenko
+    zceemc0:
+      email: zceemc0@ucl.ac.uk
+      logged_in: False # Will be managed automatically
+      name: zceemc0
+      password: zceemc0
+    zceexmi:
+      email: zceexmi@ucl.ac.uk
+      logged_in: False # Will be managed automatically
+      name: zceexmi
+      password: zceexmi
+    zceewai:
+      email: zceewai@ucl.ac.uk
+      logged_in: False # Will be managed automatically
+      name: zceewai
+      password: zceewai
+    zceeyz4:
+      email: zceeyz4@ucl.ac.uk
+      logged_in: False # Will be managed automatically
+      name: zceeyz4
+      password: zceeyz4
+    zceehud:
+      email: zceehud@ucl.ac.uk
+      logged_in: False # Will be managed automatically
+      name: zceehud
+      password: zceehud
+    zceelub:
+      email: zceelub@ucl.ac.uk
+      logged_in: False # Will be managed automatically
+      name: zceelub
+      password: zceelub
+cookie:
+  expiry_days: 0
+  key: some_signature_key # Must be string
+  name: some_cookie_name
