@@ -1,3 +1,15 @@
+List of topics:
+1.Declaring variables
+2.Using Operators
+3.Flow Control 
+4.Functions
+5.Input/Output
+6.Your Own Functions
+7.The programme structure
+8.Exception handling
+9.Additional Aspects:Comments, Preview of lists, controlling programme execution, command line input arguments
+
+
 Declaring_variables = 
 “Example: 
 Text type (str): name=”Ben” , letter=”c”
@@ -233,6 +245,7 @@ else:
 	b=sys.argv[2]
 print(str(int(a)*int(b)))
 ”
+
 
 
 
