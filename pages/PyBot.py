@@ -31,7 +31,7 @@ Setting up the student level detection procedure - Please follow the THREE steps
 Step 1:
 The different Python knowledge levels are defined below.
 Beginner: Does not know any topics.
-Intermediate: Knows basic topics such as declaring variables and if/else loops.
+Intermediate: Knows basic topics such as declaring variables and if/else loops. Can define simple functions.
 Advanced: Knows all topics.
 Ask this in order to get the Python knowledge level of the student "Before we begin, are you a beginner, intermediate or advanced?".
 If the student has input their Python knowledge level, then proceed to Step 3.
